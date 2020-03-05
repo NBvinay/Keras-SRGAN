@@ -5,9 +5,6 @@
 #date            :2018/10/30
 #usage           :python train.py --options
 #python_version  :3.5.4 
-import os
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 from Network import Generator, Discriminator
 import Utils_model, Utils
@@ -109,13 +106,10 @@ def train(epochs, batch_size, input_dir, output_dir, model_save_dir, number_of_i
 
 
 if __name__== "__main__":
-    import os
-    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('-i', '--input_dir', action='store', dest='input_dir', default='./small_train_data/' ,
+    parser.add_argument('-i', '--input_dir', action='store', dest='input_dir', default='.Data/' ,
                     help='Path for input images')
                     
     parser.add_argument('-o', '--output_dir', action='store', dest='output_dir', default='./output/' ,
@@ -127,7 +121,7 @@ if __name__== "__main__":
     parser.add_argument('-b', '--batch_size', action='store', dest='batch_size', default=64,
                     help='Batch Size', type=int)
                     
-    parser.add_argument('-e', '--epochs', action='store', dest='epochs', default=10 ,
+    parser.add_argument('-e', '--epochs', action='store', dest='epochs', default=100 ,
                     help='number of iteratios for trainig', type=int)
                     
     parser.add_argument('-n', '--number_of_images', action='store', dest='number_of_images', default=30 ,
@@ -138,6 +132,5 @@ if __name__== "__main__":
     
     values = parser.parse_args()
     
-    train(values.epochs, values.batch_size, values.input_dir, values.output_dir, values.model_save_dir, values.number_of_images, values.train_test_ratio)
-
-
+    train(values.epochs, values.batch_size, values.input_dir, values.output_dir,
+         values.model_save_dir, values.number_of_images, values.train_test_ratio)
