@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-
-# Create your views here.
-# import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.utils import json

@@ -1,9 +1,8 @@
 <?php
-
   if ($_SERVER['REQUEST_METHOD'] == 'POST')
   {
     $targ_w = $targ_h = $_POST['h'];
-    $jpeg_quality = 99;
+    $jpeg_quality = 100;
 
     $src = 'demo_files/pool.jpg';
     $img_r = imagecreatefromjpeg($src);
@@ -13,7 +12,7 @@
     $targ_w,$targ_h,$_POST['w'],$_POST['h']);
 
     // header('Content-type: image/jpeg');
-    imagejpeg($dst_r,'F:\wamp\www\superres\function\Keras-SRGAN\data_lr\input_image.jpg');
+    imagejpeg($dst_r,'F:\wamp\www\superres\function\Keras-SRGAN\data_lr\input_image.jpg',$jpeg_quality);
     // header("Content-Disposition: Attachment; filename=$dst_r");
     header("Location: http://127.0.0.1:8000/RunSuperRes");
     exit;
@@ -103,9 +102,7 @@
 <div class="span12">
 <div class="jc-demo-box">
 
-
     <!-- This is the image we're attaching Jcrop to -->
-
     <img src="./demo_files/pool.jpg" id="cropbox" />
 
     <!-- This is the form that our event handler fills -->
@@ -127,12 +124,12 @@
 
 <hr class='bcolor'>
   <!-- The result Section -->
-  <div class="w3-black" id="result">
+<!--   <div class="w3-black" id="result">
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
       <h2 class="w3-wide w3-center">RESULT PAGE</h2>
 
     </div>
-  </div>
+  </div> -->
 
 </div>
 </div>
